@@ -145,14 +145,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Python Expert", "Bot Developer", " Web Developer",  "c++ Developer","R Developer", "Web scrapper", "Model Developer"],
+        strings: ["Python Developer", "Bot Developer", " Web Developer",  "c++ Developer","R Developer", "Web scrapper", "Model Developer"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Python Expert", "Bot Developer", " Web Developer",  "c++ Developer","R Developer", "Web scrapper", "Model Developer"],
+        strings: ["Python Developer", "Bot Developer", " Web Developer",  "c++ Developer","R Developer", "Web scrapper", "Model Developer"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
