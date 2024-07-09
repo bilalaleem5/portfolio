@@ -1,0 +1,1384 @@
+/*  import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Smooth scrolling for all views */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* General Section Styling */
+section {
+    padding: 100px 0;
+}
+.max-width {
+    max-width: 1300px;
+    padding: 0 20px; /* Add padding for mobile responsiveness */
+    margin: auto;
+}
+.about, .services, .skills, .teams, .contact, footer {
+    font-family: 'Poppins', sans-serif;
+}
+.about .about-content,
+.services .serv-content,
+.skills .skills-content,
+.contact .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+section .title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+section .title::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    background: #111;
+    transform: translateX(-50%);
+}
+section .title::after {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    font-size: 20px;
+    color: crimson;
+    padding: 0 5px;
+    background: #fff;
+    transform: translateX(-50%);
+}
+
+/* Mobile Styles (360px wide) */
+@media (max-width: 360px) {
+    section {
+        padding: 60px 0; /* Reduced padding for mobile */
+    }
+    section .title {
+        font-size: 28px; /* Adjust title size for mobile */
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+    }
+    .max-width {
+        padding: 0 10px; /* Adjust padding for mobile */
+    }
+}
+
+/* Tablet Styles (768px wide) */
+@media (max-width: 768px) {
+    section {
+        padding: 80px 0; /* Reduced padding for tablet */
+    }
+    section .title {
+        font-size: 32px; /* Adjust title size for tablet */
+        margin-bottom: 50px;
+        padding-bottom: 18px;
+    }
+    .max-width {
+        padding: 0 15px; /* Adjust padding for tablet */
+    }
+}
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease;
+    background: transparent; /* Transparent background */
+}
+
+.navbar.sticky {
+    padding: 15px 0;
+    background: crimson; /* Sticky navbar background color */
+}
+
+.navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center; /* Align image and text */
+}
+
+.navbar .logo img {
+    height: 60px;
+    margin-right: 10px; /* Space between image and text */
+    vertical-align: middle;
+}
+
+.navbar .logo a {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo a span {
+    color: crimson;
+    transition: all 0.3s ease;
+}
+
+.navbar.sticky .logo a span {
+    color: #fff;
+}
+
+.navbar .menu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .menu li {
+    list-style: none;
+}
+
+.navbar .menu li a {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+    color: crimson;
+}
+
+.navbar.sticky .menu li a:hover {
+    color: #fff;
+}
+
+.navbar .social-icons {
+    display: flex;
+    align-items: center; /* Center social icons vertically */
+}
+
+.navbar .social-icons a {
+    color: #fff;
+    margin-left: 10px;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar .social-icons a:hover {
+    color: crimson;
+}
+
+.menu-btn {
+    display: none; /* Initially hidden, should be displayed on smaller screens */
+}
+
+/* Responsive Navbar Styling */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px; /* Add padding for better tap target */
+    }
+
+    .navbar .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #333;
+        z-index: 998; /* Ensure it is below the navbar but above other content */
+    }
+
+    .navbar .menu.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .menu li {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0; /* Adjusted padding for better tap target */
+        border-bottom: 1px solid #444;
+    }
+
+    .navbar .menu li:last-child {
+        border-bottom: none; /* Remove border from last menu item */
+    }
+
+    .navbar .logo {
+        text-align: center; /* Center logo */
+        margin-bottom: 20px; /* Adjust spacing */
+    }
+
+    .navbar .logo a {
+        font-size: 28px;
+    }
+
+    .navbar .social-icons {
+        display: none; /* Hide social icons on mobile */
+    }
+
+    .navbar .social-icons a {
+        margin: 0 15px; /* Adjust spacing between icons */
+        color: #fff;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .menu-btn .fas {
+        font-size: 28px;
+    }
+}
+
+/* Mobile Styles (360px wide) */
+@media (max-width: 360px) {
+    .navbar {
+        padding: 10px 0;
+    }
+    .navbar .logo img {
+        height: 50px;
+    }
+    .navbar .logo a {
+        font-size: 24px;
+    }
+    .navbar .menu li a {
+        font-size: 14px;
+        padding: 10px; /* Adjusted padding for smaller screens */
+    }
+    .menu-btn {
+        font-size: 22px;
+    }
+}
+
+
+
+/* Scroll Up Button */
+.scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: crimson;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    border-bottom-width: 2px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-up-btn:hover {
+    filter: brightness(90%);
+}
+/* Home Section Styling */
+.home {
+    display: flex;
+    background: url("9.png") no-repeat center;
+    height: 100vh;
+    color: #fff;
+    min-height: 500px;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.home .max-width {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.home .max-width .row {
+    margin-right: 0;
+}
+
+.home .home-content .text-1 {
+    font-size: 27px;
+}
+
+.home .home-content .text-2 {
+    font-size: 75px;
+    font-weight: 600;
+    margin-left: -3px;
+}
+
+.home .home-content .text-3 {
+    font-size: 40px;
+    margin: 5px 0;
+}
+
+.home .home-content .text-3 span {
+    color: crimson;
+    font-weight: 500;
+}
+
+.home .home-content a {
+    display: inline-block;
+    background: crimson;
+    color: #fff;
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 20px;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+
+.home .home-content a:hover {
+    color: crimson;
+    background: none;
+}
+
+/* Responsive Styling */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    .home {
+        height: auto; /* Adjust height to content */
+        padding: 60px 0; /* Add padding for better spacing */
+        background-attachment: scroll; /* Prevent fixed background on small screens */
+    }
+
+    .home .max-width {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .home .home-content .text-1 {
+        font-size: 22px; /* Adjust font size for tablet */
+    }
+
+    .home .home-content .text-2 {
+        font-size: 50px; /* Adjust font size for tablet */
+        margin-left: 0; /* Center text */
+    }
+
+    .home .home-content .text-3 {
+        font-size: 28px; /* Adjust font size for tablet */
+    }
+
+    .home .home-content a {
+        font-size: 20px; /* Adjust button size for tablet */
+        padding: 10px 30px;
+    }
+}
+
+/* Mobile Styles (max-width: 360px) */
+@media (max-width: 360px) {
+    .home {
+        height: auto; /* Adjust height to content */
+        padding: 40px 0; /* Add padding for better spacing */
+        background-attachment: scroll; /* Prevent fixed background on small screens */
+    }
+
+    .home .max-width {
+        flex-direction: column;
+        padding: 0 15px; /* Add padding for mobile */
+    }
+
+    .home .home-content .text-1 {
+        font-size: 18px; /* Adjust font size for mobile */
+    }
+
+    .home .home-content .text-2 {
+        font-size: 35px; /* Adjust font size for mobile */
+        margin-left: 0; /* Center text */
+    }
+
+    .home .home-content .text-3 {
+        font-size: 22px; /* Adjust font size for mobile */
+    }
+
+    .home .home-content a {
+        font-size: 18px; /* Adjust button size for mobile */
+        padding: 8px 24px;
+    }
+}
+/* About Section Styling */
+.about .title::after {
+    content: "who i am";
+}
+
+.about .about-content .left {
+    width: 45%;
+}
+
+.about .about-content .left img {
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.about .about-content .right {
+    width: 55%;
+}
+
+.about .about-content .right .text {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.about .about-content .right .text span {
+    color: crimson;
+}
+
+.about .about-content .right p {
+    text-align: justify;
+}
+
+.about .about-content .right a {
+    display: inline-block;
+    background: crimson;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+
+.about .about-content .right a:hover {
+    color: crimson;
+    background: none;
+}
+
+/* Responsive Styling */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    .about .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about .about-content .left, 
+    .about .about-content .right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about .about-content .left img {
+        height: 300px;
+        width: 300px;
+    }
+
+    .about .about-content .right .text {
+        font-size: 22px; /* Adjusted font size for tablet */
+    }
+
+    .about .about-content .right a {
+        font-size: 18px; /* Adjusted button size for tablet */
+        padding: 8px 24px;
+    }
+}
+
+/* Mobile Styles (max-width: 360px) */
+@media (max-width: 360px) {
+    .about .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about .about-content .left, 
+    .about .about-content .right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about .about-content .left img {
+        height: 250px;
+        width: 250px;
+    }
+
+    .about .about-content .right .text {
+        font-size: 18px; /* Adjusted font size for mobile */
+    }
+
+    .about .about-content .right a {
+        font-size: 16px; /* Adjusted button size for mobile */
+        padding: 6px 18px;
+    }
+}
+.services {
+    color: #fff;
+    background: #111;
+}
+
+.services .title::before {
+    background: #fff;
+}
+
+.services .title::after {
+    background: #111;
+    content: "what I provide";
+}
+
+.services .serv-content .row {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping for responsive design */
+    justify-content: space-between;
+    margin-bottom: 40px; /* Adjust the spacing between rows */
+}
+
+.services .serv-content .card {
+    background: #222;
+    text-align: center;
+    border-radius: 6px;
+    padding: 50px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px; /* Adjust the spacing between cards */
+    width: calc(50% - 20px); /* Default to 2 cards per row */
+}
+
+.services .serv-content .card:hover {
+    background: crimson;
+}
+
+.services .serv-content .card .box {
+    transition: all 0.3s ease;
+}
+
+.services .serv-content .card:hover .box {
+    transform: scale(1.05);
+}
+
+.services .serv-content .card i {
+    font-size: 50px;
+    color: crimson;
+    transition: color 0.3s ease;
+}
+
+.services .serv-content .card:hover i {
+    color: #fff;
+}
+
+.services .serv-content .card .text {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+/* Responsive Styling */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    .services .serv-content .card {
+        width: calc(50% - 20px); /* Ensure cards take up 1/2 of the row */
+    }
+
+    .services .serv-content .card i {
+        font-size: 40px; /* Reduced icon size for tablets */
+    }
+
+    .services .serv-content .card .text {
+        font-size: 22px; /* Adjusted text size for tablet */
+    }
+}
+
+/* Mobile Styles (max-width: 550px) */
+@media (max-width: 550px) {
+    .services .serv-content .card {
+        width: 100%; /* Ensure cards take full width */
+    }
+
+    .services .serv-content .card i {
+        font-size: 35px; /* Reduced icon size for mobile */
+    }
+
+    .services .serv-content .card .text {
+        font-size: 18px; /* Adjusted text size for mobile */
+    }
+}
+
+/* Desktop Styles (min-width: 769px) */
+@media (min-width: 769px) {
+    .services .serv-content .card {
+        width: calc(25% - 20px); /* Ensure cards take up 1/4 of the row */
+        margin-bottom: 20px; /* Adjust spacing for desktop layout */
+    }
+
+    .services .serv-content .card i {
+        font-size: 60px; /* Increased icon size for desktop */
+    }
+
+    .services .serv-content .card .text {
+        font-size: 28px; /* Adjusted text size for desktop */
+    }
+}
+/* Skills Section Styling */
+.skills .title::after {
+    content: "what i know";
+}
+
+.skills .skills-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically centered */
+    gap: 50px; /* Add space between columns for desktop */
+}
+
+.skills .skills-content .column {
+    width: calc(50% - 25px); /* Ensure columns take up half of the container width with spacing for desktop */
+}
+
+.skills .skills-content .left {
+    margin-right: 25px; /* Add right margin to separate it from right column */
+}
+
+.skills .skills-content .left .text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-left: 2px; /* Add 2px padding from left for mobile */
+    padding-right: 20px; /* Add right padding for content in left column */
+}
+
+.skills .skills-content .left p {
+    text-align: justify;
+}
+
+.skills .skills-content .left a {
+    display: inline-block;
+    background: crimson;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 16px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+
+.skills .skills-content .left a:hover {
+    color: crimson;
+    background: none;
+}
+
+.skills .skills-content .right {
+    flex: 1; /* Take remaining space */
+}
+
+.skills .skills-content .right .bars {
+    margin-bottom: 15px;
+}
+
+.skills .skills-content .right .info {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skills .skills-content .right span {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.skills .skills-content .right .line {
+    height: 10px; /* Increased height of skill bars */
+    width: 100%;
+    background: lightgrey;
+    position: relative;
+    overflow: hidden; /* Ensure the bar is not overflowing */
+    border-radius: 10px; /* Rounded corners for the bar */
+}
+
+.skills .skills-content .right .line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #ff0000; /* White color for initial state */
+    width: 0; /* Start with no width */
+    transition: width 1s ease; /* Smooth animation for width changes */
+}
+
+/* Animation for Skill Bars */
+.skills .skills-content .right .html::before {
+    width: 90%; /* Adjusted width for HTML */
+    animation: animateSkillsHTML 1s ease forwards; /* Animate width */
+}
+
+.skills .skills-content .right .css::before {
+    width: 60%; /* Adjusted width for CSS */
+    animation: animateSkillsCSS 1s ease forwards; /* Animate width */
+}
+
+.skills .skills-content .right .js::before {
+    width: 80%; /* Adjusted width for JavaScript */
+    animation: animateSkillsJS 1s ease forwards; /* Animate width */
+}
+
+.skills .skills-content .right .php::before {
+    width: 50%; /* Adjusted width for PHP */
+    animation: animateSkillsPHP 1s ease forwards; /* Animate width */
+}
+
+.skills .skills-content .right .mysql::before {
+    width: 70%; /* Adjusted width for MySQL */
+    animation: animateSkillsSQL 1s ease forwards; /* Animate width */
+}
+
+/* Keyframes for skill bar animation */
+@keyframes animateSkillsHTML {
+    from {
+        width: 0;
+    }
+    to {
+        width: 90%;
+    }
+}
+
+@keyframes animateSkillsCSS {
+    from {
+        width: 0;
+    }
+    to {
+        width: 60%;
+    }
+}
+
+@keyframes animateSkillsJS {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+}
+
+@keyframes animateSkillsPHP {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50%;
+    }
+}
+
+@keyframes animateSkillsSQL {
+    from {
+        width: 0;
+    }
+    to {
+        width: 70%;
+    }
+}
+
+/* Responsive Styling */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    .skills .skills-content {
+        flex-direction: column; /* Stack columns vertically on tablet */
+        align-items: center; /* Center items vertically */
+        gap: 30px; /* Adjust space between columns for tablet */
+    }
+
+    .skills .skills-content .column {
+        width: 100%; /* Full width for each column on tablet */
+        margin-bottom: 30px; /* Adjust spacing between columns */
+        margin-right: 0; /* Remove right margin on tablet */
+    }
+
+    .skills .skills-content .left .text {
+        padding-left: 2px; /* Add 2px padding from left for mobile */
+        padding-right: 0; /* Remove right padding for text in left column on tablet */
+    }
+
+    .skills .skills-content .right .line {
+        height: 8px; /* Reduced height of skill bars for tablet */
+    }
+}
+
+/* Mobile Styles (max-width: 360px) */
+@media (max-width: 360px) {
+    .skills .skills-content {
+        flex-direction: column; /* Stack columns vertically on mobile */
+        align-items: center; /* Center items vertically */
+        gap: 30px; /* Adjust space between columns for mobile */
+    }
+
+    .skills .skills-content .column {
+        width: 100%; /* Full width for each column on mobile */
+        margin-bottom: 30px; /* Adjust spacing between columns */
+        text-align: center; /* Center text in both columns on mobile */
+    }
+
+    .skills .skills-content .left .text {
+        padding-left: 4px; /* Add 4px padding from left for mobile */
+        padding-right: 2px; /* Add 2px padding from right for mobile */
+        margin-bottom: 20px; /* Add margin bottom for text in left column on mobile */
+    }
+
+    .skills .skills-content .right .line {
+        height: 6px; /* Further reduced height of skill bars for mobile */
+        padding-left: 4px;
+    }
+
+    .skills .skills-content .left {
+        order: 1; /* Move left column below right column in mobile view */
+    }
+
+    .skills .skills-content .right {
+        order: -1; /* Move right column above left column in mobile view */
+    }
+
+    .skills .skills-content .right .info {
+        justify-content: center; /* Center align info elements in mobile */
+    }
+}
+/* teams section styling */
+.teams {
+    background-color: black; /* Set the background color to black */
+    padding: 50px 0; /* Adjust padding as needed */
+}
+
+.teams .title::after {
+    content: "who with me";
+    color: #ff0000;
+    background-color: #000;
+}
+
+.teams .carousel .card {
+    background: #222;
+    border-radius: 6px;
+    padding: 25px 35px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.teams .carousel .card:hover {
+    background: crimson;
+}
+
+.teams .carousel .card .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.teams .carousel .card:hover .box {
+    transform: scale(1.05);
+}
+
+.teams .carousel .card .text {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+.teams .carousel .card img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid crimson;
+    transition: all 0.3s ease;
+}
+
+.teams .carousel .card:hover img {
+    border-color: #fff;
+}
+
+.owl-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.owl-dot {
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    outline: none!important;
+    border-radius: 50%;
+    border: 2px solid crimson!important;
+    transition: all 0.3s ease;
+}
+
+.owl-dot.active {
+    width: 35px;
+    border-radius: 14px;
+}
+
+.owl-dot.active,
+.owl-dot:hover {
+    background: crimson!important;
+}
+
+/* Contact Section Styling */
+.contact .title::after {
+    content: "get in touch";
+}
+
+.contact .contact-content .column {
+    width: calc(50% - 30px);
+}
+
+.contact .contact-content .text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.contact .contact-content .left p {
+    text-align: justify;
+}
+
+.contact .contact-content .left .icons {
+    margin: 10px 0;
+}
+
+.contact .contact-content .row {
+    display: flex;
+    height: 65px;
+    align-items: center;
+}
+
+.contact .contact-content .row .info {
+    margin-left: 30px;
+}
+
+.contact .contact-content .row i {
+    font-size: 25px;
+    color: crimson;
+}
+
+.contact .contact-content .info .head {
+    font-weight: 500;
+}
+
+.contact .contact-content .info .sub-title {
+    color: #333;
+}
+
+.contact .right form .fields {
+    display: flex;
+    flex-wrap: wrap; /* Ensure fields wrap on smaller screens */
+}
+
+.contact .right form .field,
+.contact .right form .fields .field {
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contact .right form .textarea {
+    height: 100px; /* Increased height for textarea on mobile */
+    width: 100%;
+}
+
+.contact .right form .name {
+    margin-right: 10px;
+}
+
+.contact .right form .field input,
+.contact .right form .textarea textarea {
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.contact .right form .field input:focus,
+.contact .right form .textarea textarea:focus {
+    border-color: #b3b3b3;
+}
+
+.contact .right form .textarea textarea {
+    padding-top: 10px;
+    resize: none;
+}
+
+.contact .right form .button-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ensure button area starts from the left */
+}
+
+.contact .right form .button-area button {
+    color: #fff;
+    display: block;
+    width: 160px !important; /* Fixed width for button */
+    height: 45px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #dc143c;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+
+.contact .right form .button-area button:hover {
+    color: crimson;
+    background: none;
+}
+
+/* Responsive Styling */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    .contact .contact-content .column {
+        width: 100%; /* Full width for columns on tablets */
+        margin-bottom: 30px; /* Increased margin bottom for better spacing */
+    }
+
+    .contact .right form .field,
+    .contact .right form .fields .field {
+        margin-bottom: 20px; /* Adjusted margin bottom for fields on tablets */
+    }
+
+    .contact .right form .textarea {
+        height: 120px; /* Increased height for textarea on tablets */
+    }
+}
+
+/* Mobile Styles (max-width: 360px) */
+@media (max-width: 360px) {
+    .contact .contact-content .column {
+        width: 100%; /* Full width for columns on mobile */
+        margin-bottom: 20px; /* Adjusted margin bottom for columns on mobile */
+        padding-left: 10px;
+    }
+
+    .contact .right form .field,
+    .contact .right form .fields .field {
+        margin-bottom: 15px; /* Reduced margin bottom for fields on mobile */
+    }
+
+    .contact .right form .textarea {
+        height: 140px; /* Increased height for textarea on mobile */
+    }
+
+    .contact .right form .button-area {
+        justify-content: center; /* Center align button on mobile */
+    }
+
+    .contact .right form .button-area button {
+        width: 100%; /* Full width for button on mobile */
+    }
+}
+#portfolio {
+    background-color: #111;
+    padding: 40px 10px;
+    color: white;
+    text-align: center;
+}
+
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-title {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.portfolio-subtitle {
+    color: #dc143c;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.portfolio-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.portfolio-box {
+    width: calc(33.33% - 32px);
+    margin: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-90deg); /* Start with rotated state */
+    transform-origin: center top;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    backface-visibility: hidden; /* Ensures the back side is not visible during flip */
+    transition: transform 0.6s ease, opacity 0.6s ease; /* Transition for flip animation */
+}
+
+.flip {
+    transform: perspective(1000px) rotateX(0deg); /* End with normal state */
+}
+
+.red-box {
+    background-color: #dc143c;
+    color: #FBFBFB;
+}
+
+.red-box h3 {
+    color: #FBFBFB; /* Title color in red box */
+    transition: color 0.3s;
+}
+
+.red-box p {
+    color: #000000; /* Description color in red box */
+    transition: color 0.3s;
+}
+
+.red-box .portfolio-button-red {
+    background-color: #FBFBFB;
+    color: black; /* Button color in red box */
+    border: 2px solid black; /* Added black outline */
+    padding: 12px 24px; /* Increased padding for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.red-box:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent black background on hover */
+}
+
+.red-box:hover h3 {
+    color: #dc143c; /* Title color in red box on hover */
+}
+
+.red-box:hover p {
+    color: #dbdadb; /* Description color in red box on hover */
+}
+
+.red-box .portfolio-button-red:hover {
+    background-color: black;
+    color: white; /* Button hover color in red box */
+    border-color: white;
+}
+
+.white-box {
+    background-color: #FBFBFB;
+    color: #dc143c;
+}
+
+.white-box h3 {
+    color: #000000; /* Title color in white box */
+    transition: color 0.3s;
+}
+
+.white-box p {
+    color: #dc143c; /* Description color in white box */
+    transition: color 0.3s;
+}
+
+.white-box .portfolio-button-white {
+    background-color: #dc143c;
+    color: #FBFBFB; /* Button color in white box */
+    border: 2px solid black; /* Added black outline */
+    padding: 12px 24px; /* Increased padding for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.white-box:hover {
+    background-color: rgba(251, 251, 251, 0.5); /* Transparent #FBFBFB color on hover */
+}
+
+.white-box:hover h3 {
+    color: #FBFBFB; /* Title color in white box on hover */
+}
+
+.white-box:hover p {
+    color: #000000; /* Description color in white box on hover */
+}
+
+.white-box .portfolio-button-white:hover {
+    background-color: black;
+    color: white; /* Button hover color in white box */
+    border-color: white;
+}
+
+.portfolio-button-red,
+.portfolio-button-white {
+    margin-top: 15px; /* Increased margin-top for buttons */
+    align-self: center;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .portfolio-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .portfolio-box {
+        width: 80%;
+        margin-bottom: 20px;
+        margin: 20px 0; /* Adjusted margin for responsiveness */
+    }
+}
+
+#parallax-section {
+    height: 40vh; /* Adjust height as needed */
+    background-image: url('3.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FBFBFB; /* White color for text */
+    text-align: center;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 1;
+}
+
+.parallax-title {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #dc143c; /* Red color */
+}
+
+.parallax-text {
+    font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+    .parallax-title {
+        font-size: 2em;
+    }
+    .parallax-text {
+        font-size: 1.2em;
+    }
+}
+
+
+/* Footer Section Styling */
+footer {
+    background: #222;
+    padding: 15px 23px;
+    color: #fff;
+    text-align: center;
+}
+
+footer span a {
+    color: crimson;
+    text-decoration: none;
+}
+
+footer span a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    font-size: 24px;
+    margin-top: 20px; /* Adjust top margin for social icons */
+}
+
+.social-icons a {
+    margin: 0 15px; /* Adjust horizontal spacing between icons */
+    color: #f50000;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+/* Responsive Design */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 10px; /* Reduced padding for smaller screens */
+    }
+
+    .social-icons {
+        margin-top: 15px; /* Adjusted top margin for social icons on tablets */
+    }
+}
+
+/* Mobile Styles (max-width: 360px) */
+@media (max-width: 360px) {
+    footer {
+        padding: 15px 5px; /* Further reduced padding for very small screens */
+    }
+
+    .social-icons {
+        font-size: 20px; /* Decreased font size for social icons on mobile */
+        margin-top: 10px; /* Adjusted top margin for social icons on mobile */
+    }
+}
